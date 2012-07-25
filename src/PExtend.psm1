@@ -1,8 +1,15 @@
-function Join-Object($first, $second) {
+function Join-Object() {
+    param (
+        [parameter(ValueFromRemainingArguments=$true)] $arguments = @()
+    )
     $joinedObject = @{ }
 
-    $first.Keys | %{ $joinedObject[$_] =  $first[$_] }
-    $second.Keys | %{ $joinedObject[$_] =  $second[$_] }
+    $arguments | %{
+      foreach ($key in $_.Keys) {
+        $value = $_.$key
+        $joinedObject[$key] =  $_[$key] 
+      }
+    }
 
     return $joinedObject
 }
@@ -12,7 +19,7 @@ function Join-Object($first, $second) {
 function Compare-Object($reference, $difference, $includeEqual) {
   function Get-Result($side) {
     New-Object PSObject -Property @{
-      'InputPath'= "$path$key";
+      'InputPath'= "$key";
       'SideIndicator' = $side;
       'ReferenceValue' = $refValue;
       'DifferenceValue' = $difValue;
@@ -34,12 +41,12 @@ function Compare-Object($reference, $difference, $includeEqual) {
         Get-Result '<='
       }
       elseif ($refValue -is [hashtable] -and $difValue -is [hashtable]) {
-        Compare-Hashtable "$key." $refValue $difValue
+        Compare-Hashtable $refValue $difValue
       }
       elseif ($refValue -ne $difValue) {
         Get-Result '<>'
       }
-      elseif ($IncludeEqual) {
+      elseif ($includeEqual) {
         Get-Result '=='
       }
     }
