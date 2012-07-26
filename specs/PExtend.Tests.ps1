@@ -121,4 +121,68 @@ Describe "Extend for PowerShell" {
         $exists = $comparison -eq $null
         $exists.should.be($true)
     }
+
+    it "should extend object with both objects having same inner hashtables however one of them has an extra inner hashtable" {
+        $test1 = @{
+            innerTest = @{
+                test1 = "test1"
+            }
+        }
+
+        $test2 = @{
+            innerTest = @{
+                test2 = "test2"
+                innerTest = @{
+                    test1 = "test1"
+                }
+            }
+        }
+
+        $expected = @{
+            innerTest = @{
+                test1 = "test1"
+                test2 = "test2"
+                innerTest = @{
+                    test1 = "test1"
+                }
+            }
+        }
+
+        $actual = Join-Object $test1 $test2
+        $comparison = Compare-Object $actual $expected
+        $exists = $comparison -eq $null
+        $exists.should.be($true)
+    }
+
+    it "should extend object with both objects having same double inner hashtables with diffrent values" {
+        $test1 = @{
+            innerTest = @{
+                innerTest = @{
+                    test1 = "test1"
+                }
+            }
+        }
+
+        $test2 = @{
+            innerTest = @{
+                innerTest = @{
+                    test2 = "test2"
+                }
+            }
+        }
+
+        $expected = @{
+            innerTest = @{
+                innerTest = @{
+                    test1 = "test1"
+                    test2 = "test2"
+                }
+            }
+        }
+
+        $actual = Join-Object $test1 $test2
+        $comparison = Compare-Object $actual $expected
+        $exists = $comparison -eq $null
+        $exists.should.be($true)
+    }
 }
