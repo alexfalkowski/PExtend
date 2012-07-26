@@ -2,13 +2,30 @@ function Join-Object() {
     param (
         [parameter(ValueFromRemainingArguments=$true)] $arguments = @()
     )
+
+    function Merge-Hashtables($master, $slave) {
+      foreach ($key in $slave.Keys) {
+        $value = $slave.$key
+
+        if ($value -is [hashtable]) {
+          $hashValue = $master[$key]
+          if ($hashValue -eq $null) {
+            $hashValue = @{ }
+            $master[$key] = $hashValue
+          }
+
+          Merge-Hashtables $hashValue $value   
+        }
+        else {
+          $master[$key] = $slave[$key] 
+        }
+      }
+    }
+
     $joinedObject = @{ }
 
     $arguments | %{
-      foreach ($key in $_.Keys) {
-        $value = $_.$key
-        $joinedObject[$key] =  $_[$key] 
-      }
+      Merge-Hashtables $joinedObject $_
     }
 
     return $joinedObject
@@ -26,7 +43,7 @@ function Compare-Object($reference, $difference, $includeEqual) {
     }
   }
 
-  function Compare-Hashtable($ref, $dif) {
+  function Compare-Hashtables($ref, $dif) {
     $nonrefKeys = New-Object 'System.Collections.Generic.HashSet[string]'
     $dif.Keys | foreach { 
         [void]$nonrefKeys.Add($_) 
@@ -41,7 +58,7 @@ function Compare-Object($reference, $difference, $includeEqual) {
         Get-Result '<='
       }
       elseif ($refValue -is [hashtable] -and $difValue -is [hashtable]) {
-        Compare-Hashtable $refValue $difValue
+        Compare-Hashtables $refValue $difValue
       }
       elseif ($refValue -ne $difValue) {
         Get-Result '<>'
@@ -58,5 +75,5 @@ function Compare-Object($reference, $difference, $includeEqual) {
     }
   }
 
-  Compare-Hashtable $reference $difference
+  Compare-Hashtables $reference $difference
 }

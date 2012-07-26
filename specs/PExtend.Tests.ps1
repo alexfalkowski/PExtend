@@ -20,7 +20,7 @@ Describe "Extend for PowerShell" {
         $exists.should.be($true)
     }
 
-    it "should extend objetc with second property" {
+    it "should extend object with second property" {
         $test1 = @{
             test1 = "test1"
         }
@@ -87,6 +87,32 @@ Describe "Extend for PowerShell" {
             }
             innerTest2 = @{
                 test = "test1"
+            }
+        }
+
+        $actual = Join-Object $test1 $test2
+        $comparison = Compare-Object $actual $expected
+        $exists = $comparison -eq $null
+        $exists.should.be($true)
+    }
+
+    it "should extend object with both objects having same inner hashtables with diffrent values" {
+        $test1 = @{
+            innerTest = @{
+                test1 = "test1"
+            }
+        }
+
+        $test2 = @{
+            innerTest = @{
+                test2 = "test2"
+            }
+        }
+
+        $expected = @{
+            innerTest = @{
+                test1 = "test1"
+                test2 = "test2"
             }
         }
 
