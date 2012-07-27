@@ -9,13 +9,11 @@ function Join-Object() {
         $value = $slave.$key
 
         if ($value -is [hashtable]) {
-          $hashValue = $master[$key]
-          if ($hashValue -eq $null) {
-            $hashValue = @{ }
-            $master[$key] = $hashValue
+          if ($master[$key] -eq $null) {
+            $master[$key] = @{ }
           }
 
-          Merge-Hashtables $hashValue $value   
+          Merge-Hashtables $master[$key] $value   
         }
         else {
           $master[$key] = $slave[$key] 
