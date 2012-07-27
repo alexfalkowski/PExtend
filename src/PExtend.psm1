@@ -32,15 +32,8 @@ function Join-Object() {
     return $joinedObject
 }
 
-# Taken from http://stackoverflow.com/questions/4521905/how-to-compare-associative-arrays-in-powershell
 function Compare-Object($reference, $difference) {
-  $nonrefKeys = New-Object 'System.Collections.Generic.HashSet[string]'
-  $difference.Keys | %{ 
-    $nonrefKeys.Add($_) 
-  }
-
   foreach ($key in $reference.Keys) {
-    $nonrefKeys.Remove($key)
     $refValue = $reference.$key
     $difValue = $difference.$key
 
@@ -53,10 +46,6 @@ function Compare-Object($reference, $difference) {
     elseif ($refValue -ne $difValue) {
       return $false
     }
-  }
-
-  foreach ($key in $nonrefKeys) {
-    return $false
   }
 
   return $true

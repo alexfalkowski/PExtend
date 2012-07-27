@@ -1,6 +1,6 @@
 Import-Module ../src/PExtend.psm1
 
-Describe "Extend for PowerShell" {
+Describe "PExtend" {
     it "should extend simple object" {
         $test1 = @{
             test = "test1"
