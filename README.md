@@ -6,7 +6,11 @@ Provides the ability to extend objects. Inspired by jQuery.extend() http://api.j
 Usage
 -----
 
-Given this example:
+To use this module you need to install the module from [PSGet](http://psget.net/) using the command:
+    
+    Install-Module PExtend
+
+Once you have module installed try this example:
 
 	$test1 = @{
         test1 = "test1"
