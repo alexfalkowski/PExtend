@@ -7,7 +7,7 @@
     <owners>Alex Falkowski</owners>
     <licenseUrl>https://github.com/alexfalkowski/PExtend/blob/master/README.md</licenseUrl>
     <projectUrl>https://github.com/alexfalkowski/PExtend</projectUrl>
-    <iconUrl>https://github.com/alexfalkowski/PExtend/blob/master/logo.png</iconUrl>
+    <iconUrl>https://github.com/alexfalkowski/PExtend/raw/master/logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Provides the ability to extend objects. Inspired by jQuery.extend() http://api.jquery.com/jQuery.extend/</description>
     <copyright>Copyright 2012</copyright>
