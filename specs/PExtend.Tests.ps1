@@ -14,8 +14,8 @@ Describe "PExtend" {
             test = "test2"
         }
 
-        $actual = Join-Object $test1 $test2
-        $comparison = Compare-Object $actual $expected
+        $actual = Join-Hashtable $test1 $test2
+        $comparison = Compare-Hashtable $actual $expected
         $comparison.should.be($true)
     }
 
@@ -33,8 +33,8 @@ Describe "PExtend" {
             test2 = "test2"
         }
 
-        $actual = Join-Object $test1 $test2
-        $comparison = Compare-Object $actual $expected
+        $actual = Join-Hashtable $test1 $test2
+        $comparison = Compare-Hashtable $actual $expected
         $comparison.should.be($true)
     }
 
@@ -57,8 +57,8 @@ Describe "PExtend" {
             }
         }
 
-        $actual = Join-Object $test1 $test2
-        $comparison = Compare-Object $actual $expected
+        $actual = Join-Hashtable $test1 $test2
+        $comparison = Compare-Hashtable $actual $expected
         $comparison.should.be($true)
     }
 
@@ -87,8 +87,8 @@ Describe "PExtend" {
             }
         }
 
-        $actual = Join-Object $test1 $test2
-        $comparison = Compare-Object $actual $expected
+        $actual = Join-Hashtable $test1 $test2
+        $comparison = Compare-Hashtable $actual $expected
         $comparison.should.be($true)
     }
 
@@ -112,8 +112,8 @@ Describe "PExtend" {
             }
         }
 
-        $actual = Join-Object $test1 $test2
-        $comparison = Compare-Object $actual $expected
+        $actual = Join-Hashtable $test1 $test2
+        $comparison = Compare-Hashtable $actual $expected
         $comparison.should.be($true)
     }
 
@@ -143,8 +143,8 @@ Describe "PExtend" {
             }
         }
 
-        $actual = Join-Object $test1 $test2
-        $comparison = Compare-Object $actual $expected
+        $actual = Join-Hashtable $test1 $test2
+        $comparison = Compare-Hashtable $actual $expected
         $comparison.should.be($true)
     }
 
@@ -174,8 +174,8 @@ Describe "PExtend" {
             }
         }
 
-        $actual = Join-Object $test1 $test2
-        $comparison = Compare-Object $actual $expected
+        $actual = Join-Hashtable $test1 $test2
+        $comparison = Compare-Hashtable $actual $expected
         $comparison.should.be($true)
     }
 }

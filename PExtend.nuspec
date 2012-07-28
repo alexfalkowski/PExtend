@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>PExtend</id>
+    <version>1.0.0</version>
+    <authors>Alex Falkowski</authors>
+    <owners>Alex Falkowski</owners>
+    <licenseUrl>https://github.com/alexfalkowski/PExtend/blob/master/README.md</licenseUrl>
+    <projectUrl>https://github.com/alexfalkowski/PExtend</projectUrl>
+    <iconUrl>https://github.com/alexfalkowski/PExtend/blob/master/logo.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Provides the ability to extend objects. Inspired by jQuery.extend() http://api.jquery.com/jQuery.extend/</description>
+    <copyright>Copyright 2012</copyright>
+    <tags>powershell pester psget</tags>
+  </metadata>
+  <files>
+    <file src="src\*.*" target="content" />
+  </files>
+</package>

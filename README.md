@@ -16,7 +16,7 @@ Given this example:
         test2 = "test2"
     }
 
-    $result = Join-Object $test1 $test2
+    $result = Join-Hashtable $test1 $test2
 
 The result will be:
 

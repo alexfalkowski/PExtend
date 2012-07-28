@@ -17,7 +17,7 @@
 	ScriptsToProcess = @()
 	TypesToProcess = @()
 	FormatsToProcess = @()
-	FunctionsToExport = @('Join-Object', 'Compare-Object')
+	FunctionsToExport = @('Join-Hashtable', 'Compare-Hashtable')
 	CmdletsToExport = '*'
 	VariablesToExport = ''
 	AliasesToExport = ''

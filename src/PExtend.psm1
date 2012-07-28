@@ -1,4 +1,4 @@
-function Join-Object() {
+function Join-Hashtable() {
     param (
         [parameter(ValueFromRemainingArguments=$true)] $arguments = @()
     )
@@ -30,7 +30,7 @@ function Join-Object() {
     return $joinedObject
 }
 
-function Compare-Object($reference, $difference) {
+function Compare-Hashtable($reference, $difference) {
   foreach ($key in $reference.Keys) {
     $refValue = $reference.$key
     $difValue = $difference.$key
