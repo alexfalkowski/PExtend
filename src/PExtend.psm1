@@ -39,7 +39,7 @@ function Compare-Hashtable($reference, $difference) {
       return $false
     }
     elseif ($refValue -is [hashtable] -and $difValue -is [hashtable]) {
-      Compare-Object $refValue $difValue
+      Compare-Hashtable $refValue $difValue
     }
     elseif ($refValue -ne $difValue) {
       return $false
